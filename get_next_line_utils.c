@@ -6,65 +6,58 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:37:10 by diana             #+#    #+#             */
-/*   Updated: 2024/11/25 18:03:37 by diana            ###   ########.fr       */
+/*   Updated: 2024/12/03 11:40:15 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strdup(char *s1)
+ssize_t	ft_strlen(char *s1)
 {
-	char			*dest;
-	unsigned int	i;
+	ssize_t	i;
 
-	dest = (char *) malloc(ft_strlen(s1) + 1);
-	if (!dest)
-		return (NULL);
 	i = 0;
 	while (s1[i])
-	{
-		dest[i] = s1[i];
-		i++;
-	}
-	dest[i] = 0;
-	return (dest);
-}
-
-size_t	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
 		i++;
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+static char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t	len_s1;
-	size_t	len_s2;
-	size_t	i;
-	char 	*s3;
+	char	*new_str;
+	int		i;
+	int		j;
 
-	if (!s1 || !s2)
-		return (NULL);
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	s3 = (char *)malloc(len_s1 + len_s2 + 1);
-	if (!s3)
+	new_str = (char *)malloc(sizeof(char) \
+	* (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!new_str)
 		return (NULL);
 	i = 0;
-	while (i < len_s1)
+	while (s1[i])
 	{
-		s3[i] = s1[i];
+		new_str[i] = s1[i];
 		i++;
 	}
-	while (i < len_s1 + len_s2)
+	j = 0;
+	while (s2[j])
+		new_str[i++] = s2[j++];
+	new_str[i] = '\0';
+	return (new_str);
+}
+
+char	*ft_strjoin_free(char *s1, char *s2)
+{
+	char	*new_str;
+	
+	if (!s1)
 	{
-		s3[i] = s2[i - len_s1];
-		i++;
+		s1 = (char *)malloc(1);
+		if (!s1)
+			return (NULL);
+		s1[0] = '\0';
 	}
-	s3[i] = '\0';
-	return (s3);
+	new_str = ft_strjoin(s1, s2);
+	if (s1)
+		free(s1);
+	return (new_str);
 }
