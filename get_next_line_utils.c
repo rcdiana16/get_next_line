@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:37:10 by diana             #+#    #+#             */
-/*   Updated: 2024/12/03 11:40:15 by diana            ###   ########.fr       */
+/*   Updated: 2024/12/03 12:00:45 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static char	*ft_strjoin(char *s1, char *s2)
 char	*ft_strjoin_free(char *s1, char *s2)
 {
 	char	*new_str;
-	
+
 	if (!s1)
 	{
 		s1 = (char *)malloc(1);

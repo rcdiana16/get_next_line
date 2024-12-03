@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:07:04 by diana             #+#    #+#             */
-/*   Updated: 2024/12/02 22:16:24 by diana            ###   ########.fr       */
+/*   Updated: 2024/12/03 12:02:05 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ static ssize_t	read_into_buffer(int fd, char **buffer)
 
 static char	*get_line_in_buffer(char *buffer)
 {
-	int	 i;
-	char *line;
-	
+	int		i;
+	char	*line;
+
 	if (!buffer || !buffer[0])
 		return (NULL);
 	i = 0;
@@ -104,7 +104,7 @@ static char	*trim_buffer(char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char *buffer = NULL;
+	static char	*buffer = NULL;
 	char		*line;
 	ssize_t		bytes_read;
 
